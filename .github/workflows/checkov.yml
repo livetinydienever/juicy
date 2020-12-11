@@ -1,3 +1,11 @@
+name: Checkov
+
+on:
+  push:
+    branches: [ developer, master ]
+  pull_request:
+    branches: [ developer, master ]
+
 jobs:
   checkov-job:
     runs on: ubuntu-latest

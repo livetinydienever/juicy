@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "3f40d68c-45d9-4d06-9c68-e3ab8884aeaf",
+		"name": "JuiceShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Search",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let template = `",
+									"    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\"",
+									"        crossorigin=\"anonymous\">",
+									"    `;",
+									"pm.visualizer.set(template, {",
+									"    response: JSON.parse(responseBody)",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/products/search?q=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/products/1/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"products",
+								"1",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shopping",
+			"item": [
+				{
+					"name": "Shopping Basket",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/rest/basket/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"basket",
+								"8"
+							]
+						},
+						"description": "Retrieve the shopping basket"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Credit Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fullName\":\"maverick\",\"cardNum\":1234567891234567,\"expMonth\":\"2\",\"expYear\":\"2085\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/Cards/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Cards",
+								""
+							]
+						},
+						"description": "This request adds new credit card information"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTksInVzZXJuYW1lIjoiIiwiZW1haWwiOiJqb2huQG1hcnkuY29tIiwicGFzc3dvcmQiOiJmMzg3YzE1MjYwNmQ4NDVkM2M0ZmNiNDEzN2IwYzA4NCIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6Mzc6MTcuNTIzICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6Mzc6MTcuNTIzICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU5MDk4MzA2NywiZXhwIjoxNTkxMDAxMDY3fQ.pavcecgUiWGrYwtfThzBbd9_40Nivk9n2DUx7BSkJWR98SVRNonZ4u5rU72wlDEVJwk0YY0ytRM6teAfU8y4_-v5WqmBcN3hVA5ml4O_4UudIjoGzIvo9mH7iu6RAJyLIDjz1hX_kG_6KtLMgjv5aVKtkHFzfxZanRrj42W2Ytw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Register new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"john@john.com\",\"password\":\"mary123\",\"passwordRepeat\":\"mary123\",\"securityQuestion\":{\"id\":2,\"question\":\"Mother's maiden name?\",\"createdAt\":\"2020-06-01T03:10:44.683Z\",\"updatedAt\":\"2020-06-01T03:10:44.683Z\"},\"securityAnswer\":\"mary\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/Users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"Users",
+						""
+					]
+				},
+				"description": "This request registers a new user"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTgsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJtYXJ5QG1hcnkuY29tIiwicGFzc3dvcmQiOiJmMzg3YzE1MjYwNmQ4NDVkM2M0ZmNiNDEzN2IwYzA4NCIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6MzY6MDkuNDY0ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6MzY6MDkuNDY0ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU5MDk4Mjc1MSwiZXhwIjoxNTkxMDAwNzUxfQ.bWEWRR2H3rvSpZGJ_Pwe65bUxZOxreINmZM_gYxpRfPrk32RGpLsaueoBgu250k62Duld-GqUjbRm-xC0aOAuqF_TvOD9tUR1e5ml_KpQLr2gM1P0Kw07LiCywOaTzFLdP9WdN1BWD78M7w4AOEDQxFeAniZEQm_dWFzqu7OTc0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"mary@mary.com\",\"password\":\"wrongpassword\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login - Valid User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"mary@mary.com\",\"password\":\"mary123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/rest/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Feature-Policy",
+							"value": "payment 'self'"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "822"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"336-sEzj1tQaaubYcXRDk58yij+aa6g\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 Jun 2020 03:58:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"authentication\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTgsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJtYXJ5QG1hcnkuY29tIiwicGFzc3dvcmQiOiJmMzg3YzE1MjYwNmQ4NDVkM2M0ZmNiNDEzN2IwYzA4NCIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6MzY6MDkuNDY0ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjAtMDYtMDEgMDM6MzY6MDkuNDY0ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU5MDk4Mzg5NywiZXhwIjoxNTkxMDAxODk3fQ.D4yvZQETjrWWJbheeWsu_X-n3XwrwXE4LNRuw6Kc9SgQsCTNWU-96zTKARpmxZec8X8ZF6bLeQ-OcEsQ1_gJ9T7OQUA65JfgFSzPjTc3Mnio9UO3l1bKPWFO24B_vDbKKej-cNtgPOJnTMsapwUGhVAE8YpebHI4V61ocXnn0Ps\",\n        \"bid\": 9,\n        \"umail\": \"mary@mary.com\"\n    }\n}"
+				},
+				{
+					"name": "Login - Invalid User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"mary@mary.com\",\"password\":\"wrongpassword\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/rest/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Feature-Policy",
+							"value": "payment 'self'"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-ARJvVK+smzAF3QQve2mDSG+3Eus\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 Jun 2020 04:00:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Invalid email or password."
+				}
+			]
+		}
+	]
+}
